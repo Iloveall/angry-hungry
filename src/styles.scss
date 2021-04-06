@@ -1,4 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '~src/assets/scss/themes.scss';
+@import '~src/app/app.component.theme.scss';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+$custom-typography: mat-typography-config(
+        $font-family: 'Montserrat, sans-serif'
+);
+
+@include angular-material-typography($custom-typography);
+
+.theme-1 {
+  @include angular-material-theme($light-app-theme);
+  @include app-theme($light-app-theme);
+
+  $primary: map-get($light-app-theme, primary);
+  //background-color: mat-color($primary);
+}
+
+.theme-2 {
+  @include angular-material-theme($yellow-app-theme);
+  @include app-theme($yellow-app-theme);
+
+  $primary: map-get($yellow-app-theme, primary);
+  background-color: mat-color($primary);
+}
+
+.theme-3 {
+  @include angular-material-theme($red-app-theme);
+  @include app-theme($red-app-theme);
+
+  $primary: map-get($red-app-theme, primary);
+  background-color: mat-color($primary);
+}
