@@ -1,7 +1,17 @@
-<div>
-  <button mat-raised-button color="primary">OK</button>
-  <button mat-raised-button color="accent">OK</button>
-  <button mat-icon-button color="accent">
-    <mat-icon color="accent">favorite</mat-icon>
-  </button>
+<div fxLayout="column" fxLayoutGap="1rem">
+  <mat-chip-list aria-label="Fish selection">
+    <mat-chip [style.cursor]="'pointer'" color="accent" selected>All</mat-chip>
+    <mat-chip [style.cursor]="'pointer'"
+              *ngFor="let category of categories$ | async">
+      {{ category.name }}
+    </mat-chip>
+  </mat-chip-list>
+
+  <div fxLayoutGap="1rem">
+    <div gdColumns="repeat(4, 1fr)" gdGap="1rem" fxFlex>
+      <app-card *ngFor="let product of products$ | async" [product]="product"></app-card>
+    </div>
+  </div>
 </div>
+
+

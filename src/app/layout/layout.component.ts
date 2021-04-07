@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ProductDetailsService } from '../product/services/product-details.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+  showProductDetails$: Observable<boolean> | undefined;
 
-  constructor() { }
+  constructor(private productDetails: ProductDetailsService) { }
 
   ngOnInit(): void {
+    this.showProductDetails$ = this.productDetails.showDetails$;
   }
 
 }

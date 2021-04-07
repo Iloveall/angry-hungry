@@ -3,3 +3,7 @@
 <div class="__content">
   <router-outlet></router-outlet>
 </div>
+
+<div class="__product-details mat-elevation-z6" *ngIf="showProductDetails$ | async">
+  <app-product-details></app-product-details>
+</div>

@@ -1,0 +1,16 @@
+<div class="__container mat-elevation-z2" fxLayout="column" matRipple>
+  <div fxLayoutAlign="center center">
+    <img class="__preview" [src]="'./assets/images/' + product.image" alt="preview">
+  </div>
+  <div class="__content">
+    <div class="mat-body-1">
+      {{ product.name }}
+    </div>
+    <div fxLayoutAlign="space-between center">
+      <div class="mat-caption">
+        {{ product.price | currency }}
+      </div>
+      <mat-icon color="accent">add</mat-icon>
+    </div>
+  </div>
+</div>

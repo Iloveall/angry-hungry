@@ -41,3 +41,22 @@ $custom-typography: mat-typography-config(
   $primary: map-get($red-app-theme, primary);
   background-color: mat-color($primary);
 }
+
+.order-menu {
+  &.mat-menu-panel {
+    max-width: none;
+    overflow: hidden;
+  }
+
+  .mat-menu-content {
+    padding: 0;
+
+    height: 100%;
+  }
+
+  .order-menu-content {
+    padding: 1rem;
+
+    height: 100%;
+  }
+}

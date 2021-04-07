@@ -1,0 +1,54 @@
+<div class="mat-headline">Your order</div>
+
+<div fxLayout="column" fxLayoutGap=".4rem">
+  <div fxLayoutAlign="space-around">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <mat-icon>schedule</mat-icon>
+      <span>20-35</span>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <mat-icon>thumb_up</mat-icon>
+      <span>{{ .96 | percent}}</span>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <mat-icon>delivery_dining</mat-icon>
+      <span>{{ 3 | currency }}</span>
+    </div>
+  </div>
+
+  <ul class="__products">
+    <li *ngFor="let product of [1,2,3,4,5,6,7]" fxLayout="column" fxLayoutGap=".4rem">
+      <div gdColumns="40px 1fr auto">
+        <div>4x</div>
+        <div>Name of product</div>
+        <div>{{ 10 | currency }}</div>
+      </div>
+
+      <div gdColumns="auto 1fr auto">
+        <div>
+          <button mat-icon-button color="accent">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+        <div fxLayoutAlign="center center" (click)="openProductDetails()">
+          <a mat-button color="accent">Edit</a>
+        </div>
+        <div>
+          <button mat-icon-button color="accent">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </li>
+  </ul>
+
+  <div fxLayoutAlign="space-between center">
+    <div class="mat-title">Total price</div>
+    <div class="mat-headline">{{ 100.32 | currency }}</div>
+  </div>
+
+  <div fxLayoutAlign="center center">
+    <button mat-flat-button color="accent">Complete order</button>
+  </div>
+</div>
