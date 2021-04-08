@@ -1,11 +1,5 @@
 <div fxLayout="column" fxLayoutGap="1rem">
-  <mat-chip-list aria-label="Fish selection">
-    <mat-chip [style.cursor]="'pointer'" color="accent" selected>All</mat-chip>
-    <mat-chip [style.cursor]="'pointer'"
-              *ngFor="let category of categories$ | async">
-      {{ category.name }}
-    </mat-chip>
-  </mat-chip-list>
+  <app-product-categories></app-product-categories>
 
   <div fxLayoutGap="1rem">
     <div gdColumns="repeat(4, 1fr)" gdGap="1rem" fxFlex>
@@ -13,5 +7,3 @@
     </div>
   </div>
 </div>
-
-

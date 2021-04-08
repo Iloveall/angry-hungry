@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    // Todo: Move to directive
     let elem = e.target;
     let allowToClose = true;
 
@@ -26,8 +27,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
         allowToClose = false;
         break;
       }
-
-      console.log('elem', elem.tagName);
     }
 
     if (allowToClose) {

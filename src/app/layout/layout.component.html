@@ -4,6 +4,10 @@
   <router-outlet></router-outlet>
 </div>
 
-<div class="__product-details mat-elevation-z6" *ngIf="showProductDetails$ | async">
-  <app-product-details></app-product-details>
+<div class="__product-details mat-elevation-z6"
+     fxLayoutAlign="end start"
+     *ngIf="showProductDetails$ | async">
+  <div class="__product-details-content" fxFlex="50%">
+    <app-product-details ></app-product-details>
+  </div>
 </div>
