@@ -18,7 +18,7 @@ const orderReducer = createReducer(
   initialState,
   on(
     addProductToOrderAction,
-    (state, { orderProduct }) => adapter.addOne(orderProduct, state)
+    (state, { orderProduct }) => adapter.upsertOne(orderProduct, state)
   ),
   on(
     updateProductOrderAction,

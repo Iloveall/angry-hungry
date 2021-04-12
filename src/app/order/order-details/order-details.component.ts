@@ -2,11 +2,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductDetailsService } from '../../product/services/product-details.service';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { hasProductsSelector, orderProductsSelector, orderProductsTotalPriceSelector } from '../store/order.selectors';
+import {
+  hasProductsSelector,
+  orderProductsSelector,
+  orderProductsTotalPriceSelector,
+  totalPriceOfOrderProductOptionsSelector, totalPriceOfOrderProductSelector
+} from '../store/order.selectors';
 import { tap } from 'rxjs/operators';
 import { OrderProductInterface } from '../types/product-order.interface';
 import { removeProductFromOrderAction, updateProductOrderAction } from '../store/order.actions';
 import { Update } from '@ngrx/entity';
+import { getProductForIdSelector } from '../../product/store/get-products.selectors';
+import { getProductAction } from '../../product/product-details/store/get-product.actions';
 
 @Component({
   selector: 'app-order-details',
@@ -33,8 +40,9 @@ export class OrderDetailsComponent implements OnInit {
     this.hasProducts$ = this.store$.pipe(select(hasProductsSelector));
   }
 
-  openProductDetails(): void {
+  openProductDetails(event: Event, orderProduct: OrderProductInterface): void {
     this.closeMenu.emit();
+    this.store$.dispatch(getProductAction({id: orderProduct.product.id}));
     this.productDetailsService.showDetails();
   }
 
@@ -69,5 +77,13 @@ export class OrderDetailsComponent implements OnInit {
 
   removeProduct(orderProduct: OrderProductInterface): void {
     this.store$.dispatch(removeProductFromOrderAction({id: orderProduct.product.id}));
+  }
+
+  totalPriceOfOrderProduct$(id: number): Observable<number> {
+    return this.store$.pipe(select(totalPriceOfOrderProductSelector, {id}));
+  }
+
+  totalPriceOfOrderProductOptions$(id: number): Observable<number> {
+    return this.store$.pipe(select(totalPriceOfOrderProductOptionsSelector, {id}));
   }
 }

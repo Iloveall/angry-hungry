@@ -1,0 +1,9 @@
+<div fxLayoutAlign="start center" fxLayoutGap=".4rem" (click)="onBlur($event)">
+  <button mat-icon-button color="accent" type="button" (click)="onReduce()" [disabled]="disabled">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <span>{{ value }}</span>
+  <button mat-icon-button color="accent" type="button" (click)="onIncrease()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

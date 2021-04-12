@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <ul class="__options">
+    <li class="__option" fxLayoutAlign="space-between center"
+        *ngFor="let control of values.controls; let i = index;">
+      <ng-container formArrayName="values">
+        <ng-container [formGroupName]="i">
+          <mat-checkbox fxFlex formControlName="option" (change)="onOptionChange($event, control)">
+            {{ options[i].name }} (+{{ options[i].price | currency }})
+          </mat-checkbox>
+
+          <app-counter-control
+              [hidden]="!control.get('option')?.value"
+              formControlName="amount"
+              (valueChange)="onAmountChange($event, control)">
+          </app-counter-control>
+        </ng-container>
+      </ng-container>
+    </li>
+  </ul>
+
+  <div class="__footer" fxLayoutAlign="center">
+    <button mat-flat-button color="accent">Add to order</button>
+  </div>
+</form>

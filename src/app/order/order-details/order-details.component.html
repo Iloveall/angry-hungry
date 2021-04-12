@@ -21,7 +21,12 @@
       <div gdColumns="40px 1fr auto">
         <div>{{ orderProduct.amount }}x</div>
         <div>{{ orderProduct.product.name }}</div>
-        <div class="__product-price mat-subheading-1">{{ orderProduct.product.price | currency }}</div>
+        <div class="__product-price mat-subheading-1">
+          {{ totalPriceOfOrderProduct$(orderProduct.product.id) | async | currency }}
+          <span *ngIf="totalPriceOfOrderProductOptions$(orderProduct.product.id) | async as optionsPrice">
+            + ({{ optionsPrice | currency }})
+          </span>
+        </div>
       </div>
       <div gdColumns="auto 1fr auto">
         <div>
@@ -29,7 +34,7 @@
             <mat-icon>remove</mat-icon>
           </button>
         </div>
-        <div fxLayoutAlign="center center" (click)="openProductDetails()">
+        <div fxLayoutAlign="center center" (click)="openProductDetails($event, orderProduct)">
           <a mat-button color="accent">Edit</a>
         </div>
         <div>

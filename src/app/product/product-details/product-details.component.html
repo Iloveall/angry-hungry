@@ -17,27 +17,9 @@
       </div>
     </div>
 
-    <ul class="__options">
-      <li *ngFor="let option of product.options" fxLayoutAlign="space-between center">
-        <mat-checkbox fxFlex>
-          {{ option.name }} (+{{ option.price | currency }})
-        </mat-checkbox>
-        <div fxLayoutAlign="start center" fxLayoutGap=".4rem">
-          <button mat-icon-button color="accent">
-            <mat-icon>remove</mat-icon>
-          </button>
-          <span>3</span>
-          <button mat-icon-button color="accent">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-      </li>
-    </ul>
+    <app-product-details-form [options]="product.options"
+                              [formValue]="orderProduct$ | async"
+                              (submitForm)="onSubmit($event, product)">
+    </app-product-details-form>
   </div>
-
-  <div class="__footer" fxLayoutAlign="center">
-    <button mat-flat-button color="accent" (click)="onSubmit($event, product)">Add to order</button>
-  </div>
-
-  <!--  </form>-->
 </ng-container>

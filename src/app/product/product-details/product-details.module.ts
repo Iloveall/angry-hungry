@@ -12,6 +12,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { ProductDetailsFormComponent } from './product-details-form/product-details-form.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -24,9 +26,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatCheckboxModule,
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule,
   ],
-  declarations: [ProductDetailsComponent],
+  declarations: [ProductDetailsComponent, ProductDetailsFormComponent],
   exports: [ProductDetailsComponent]
 })
 export class ProductDetailsModule {}

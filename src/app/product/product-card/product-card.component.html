@@ -10,7 +10,8 @@
       <div class="mat-caption">
         {{ product.price | currency }}
       </div>
-      <mat-icon color="accent">add</mat-icon>
+      <mat-icon color="accent" *ngIf="!(ordered$ | async)">add</mat-icon>
+      <mat-icon color="warn" *ngIf="ordered$ | async">checked</mat-icon>
     </div>
   </div>
 </div>
