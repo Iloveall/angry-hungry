@@ -6,7 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexModule, GridModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/order.reducer';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     FlexModule,
     GridModule,
-    MatDividerModule
+    MatDividerModule,
+    EffectsModule.forFeature([]),
+    StoreModule.forFeature('order', reducer),
   ]
 })
 export class OrderModule { }

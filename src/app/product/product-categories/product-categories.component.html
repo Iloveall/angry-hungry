@@ -1,13 +1,16 @@
-<mat-chip-list aria-label="Fish selection">
-  <mat-chip [color]="'accent' || undefined"
-            [selected]="false"
-            routerLink="/">
+<mat-chip-list>
+  <mat-chip class="__item"
+            color="accent"
+            routerLink="/"
+            [selected]="!(selected$ | async)">
     All
   </mat-chip>
-  <mat-chip *ngFor="let category of productCategories$ | async"
-            [color]="'accent' || undefined"
-            [selected]="false"
-            [routerLink]="['/', category.segment]">
+  <mat-chip class="__item"
+            color="accent"
+            *ngFor="let category of productCategories$ | async"
+            [routerLink]="['/', category.url]"
+            [selected]="(selected$ | async) === category.url"
+  >
     {{ category.name }}
   </mat-chip>
 </mat-chip-list>

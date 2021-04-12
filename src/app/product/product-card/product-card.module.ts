@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './card.component';
+import { ProductCardComponent } from './product-card.component';
 import { FlexModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,10 +11,10 @@ import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
-    CardComponent
+    ProductCardComponent
   ],
   exports: [
-    CardComponent
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
@@ -25,4 +25,4 @@ import { MatMenuModule } from '@angular/material/menu';
     MatMenuModule
   ]
 })
-export class CardModule { }
+export class ProductCardModule { }

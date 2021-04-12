@@ -1,4 +1,4 @@
-<div>
+<ng-container *ngIf="product$ | async as product">
   <div class="__header" fxLayoutAlign="end">
     <button mat-icon-button (click)="onClose()">
       <mat-icon>close</mat-icon>
@@ -6,12 +6,21 @@
   </div>
 
   <div class="__content">
-    <div class="mat-title">Product name</div>
+    <div fxLayoutGap="1rem" fxLayoutAlign="space-between center">
+      <div fxFlex="35%">
+        <img class="__image" src="./assets/images/default.png" alt="image">
+      </div>
+      <div fxFlex>
+        <div class="mat-title">{{ product.name }}</div>
+        <div class="mat-title" *ngIf="product.description">{{ product.description }}</div>
+        <div class="mat-body">{{ product.price | currency }}</div>
+      </div>
+    </div>
 
     <ul class="__options">
-      <li *ngFor="let option of [1, 2, 3, 4, 5, 6]" fxLayoutAlign="space-between center">
+      <li *ngFor="let option of product.options" fxLayoutAlign="space-between center">
         <mat-checkbox fxFlex>
-          Option (+{{ 1.2 | currency }})
+          {{ option.name }} (+{{ option.price | currency }})
         </mat-checkbox>
         <div fxLayoutAlign="start center" fxLayoutGap=".4rem">
           <button mat-icon-button color="accent">
@@ -27,8 +36,8 @@
   </div>
 
   <div class="__footer" fxLayoutAlign="center">
-    <button mat-flat-button color="accent" (click)="onSubmit()">Add to order</button>
+    <button mat-flat-button color="accent" (click)="onSubmit($event, product)">Add to order</button>
   </div>
 
   <!--  </form>-->
-</div>
+</ng-container>

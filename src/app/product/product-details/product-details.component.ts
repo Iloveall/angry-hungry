@@ -1,6 +1,12 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ProductDetailsService } from '../services/product-details.service';
+import { select, Store } from '@ngrx/store';
+import { getProductForIdSelector } from '../store/get-products.selectors';
+import { ProductInterface } from '../types/product.intefrace';
+import { Observable } from 'rxjs';
+import { getProductSelector } from './store/get-product.selectors';
+import { addProductToOrderAction } from '../../order/store/order.actions';
+import { OrderProductInterface  } from '../../order/types/product-order.interface';
 
 @Component({
   selector: 'app-product-details',
@@ -8,6 +14,8 @@ import { ProductDetailsService } from '../services/product-details.service';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit, AfterViewInit {
+  product$: Observable<ProductInterface | null | undefined> | undefined;
+
   isOpened = false;
 
   @HostListener('window:click', ['$event'])
@@ -34,9 +42,10 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private productDetailsService: ProductDetailsService) { }
+  constructor(private store$: Store, private productDetailsService: ProductDetailsService) { }
 
   ngOnInit(): void {
+    this.product$ = this.store$.pipe(select(getProductSelector));
   }
 
   ngAfterViewInit(): void {
@@ -45,7 +54,13 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onSubmit(): void {
+  onSubmit(event: Event, product: ProductInterface): void {
+    const orderProduct: OrderProductInterface = {
+      product,
+      amount: 1
+    };
+
+    this.store$.dispatch(addProductToOrderAction({orderProduct}));
     this.close();
   }
 

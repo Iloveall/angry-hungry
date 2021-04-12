@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductModule } from '../product/product.module';
 import { OrderModule } from '../order/order.module';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OrderModule } from '../order/order.module';
     MatMenuModule,
     MatButtonModule,
     ProductModule,
-    OrderModule
+    OrderModule,
+    MatBadgeModule
   ]
 })
 export class LayoutModule { }

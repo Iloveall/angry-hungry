@@ -22,5 +22,5 @@ export const productCategoriesDataSelector = createSelector(
 export const productCategoriesSelector = createSelector(
   productCategoriesFeatureSelector,
   (productCategoriesResponse: ProductCategoriesStateInterface): ProductCategoryInterface[] | null | undefined =>
-    productCategoriesResponse?.data?.categories
+    productCategoriesResponse?.data?.productCategories
 );

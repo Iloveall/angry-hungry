@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GetProductCategoriesResponseInterface } from '../types/get-product-categories-response.Interface';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class ProductCategoriesService {
   }
 
   getAll$(): Observable<GetProductCategoriesResponseInterface> {
-    return this.http.get<GetProductCategoriesResponseInterface>('/assets/json/categories.json');
+    const url = `${environment.apiUrl}/product-categories`;
+
+    return this.http.get<GetProductCategoriesResponseInterface>(url);
   }
 }

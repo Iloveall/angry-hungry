@@ -1,9 +1,28 @@
 <div fxLayout="column" fxLayoutGap="1rem">
   <app-product-categories></app-product-categories>
 
-  <div fxLayoutGap="1rem">
+  <div fxLayoutGap="1rem" *ngIf="hasProducts$ | async">
     <div gdColumns="repeat(4, 1fr)" gdGap="1rem" fxFlex>
-      <app-card *ngFor="let product of products$ | async" [product]="product"></app-card>
+      <app-product-card *ngFor="let product of products$ | async; trackBy: trackByFn"
+                        [product]="product">
+      </app-product-card>
     </div>
+  </div>
+
+  <mat-spinner diameter="36" *ngIf="loading$ | async"></mat-spinner>
+
+  <div class="mat-body-1"
+       *ngIf="!(loaded$ | async) && !(hasProducts$ | async)">
+    No Products
+  </div>
+
+  <div [hidden]="!(hasProducts$ | async)">
+    <mat-paginator
+        [length]="(pagination$ | async)?.totalItems"
+        [pageIndex]="(pagination$ | async)?.currentPage"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="onPaginatorPageChanged($event)">
+    </mat-paginator>
   </div>
 </div>

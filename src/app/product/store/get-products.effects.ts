@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 export class GetProductsEffects {
   getProducts$ = createEffect(() => this.actions$.pipe(
     ofType(getProductsAction),
-    switchMap((action) => this.productsService.getAll$(action.queryParams).pipe(
+    switchMap((action) => this.productsService.get$(action.queryParams).pipe(
       map((response: ProductsResponseInterface) => getProductsSuccessAction({data: response})),
       catchError((error: ProductsErrorResponseInterface) => of(getProductsFailureAction({error})))
     ))

@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://localhost:3000',
+  pagination: {
+    limit: 10,
+    limitOptions: [5, 10, 25]
+  }
 };
 
 /*

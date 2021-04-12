@@ -16,17 +16,16 @@
     </div>
   </div>
 
-  <ul class="__products">
-    <li *ngFor="let product of [1,2,3,4,5,6,7]" fxLayout="column" fxLayoutGap=".4rem">
+  <ul class="__products" *ngIf="hasProducts$ | async">
+    <li class="__product-item" *ngFor="let orderProduct of orderProducts$ | async" fxLayout="column" fxLayoutGap=".4rem">
       <div gdColumns="40px 1fr auto">
-        <div>4x</div>
-        <div>Name of product</div>
-        <div>{{ 10 | currency }}</div>
+        <div>{{ orderProduct.amount }}x</div>
+        <div>{{ orderProduct.product.name }}</div>
+        <div class="__product-price mat-subheading-1">{{ orderProduct.product.price | currency }}</div>
       </div>
-
       <div gdColumns="auto 1fr auto">
         <div>
-          <button mat-icon-button color="accent">
+          <button mat-icon-button color="accent" (click)="reduceProductAmount($event, orderProduct)">
             <mat-icon>remove</mat-icon>
           </button>
         </div>
@@ -34,7 +33,7 @@
           <a mat-button color="accent">Edit</a>
         </div>
         <div>
-          <button mat-icon-button color="accent">
+          <button mat-icon-button color="accent" (click)="increaseProductAmount($event, orderProduct)">
             <mat-icon>add</mat-icon>
           </button>
         </div>
@@ -43,12 +42,16 @@
     </li>
   </ul>
 
-  <div fxLayoutAlign="space-between center">
-    <div class="mat-title">Total price</div>
-    <div class="mat-headline">{{ 100.32 | currency }}</div>
+  <div fxLayoutAlign="space-between center" *ngIf="hasProducts$ | async">
+    <div class="__total-price mat-title">Total price</div>
+    <div class="__total-price mat-headline">{{ totalPrice$ | async | currency }}</div>
   </div>
 
-  <div fxLayoutAlign="center center">
+  <div fxLayoutAlign="center center" *ngIf="hasProducts$ | async">
     <button mat-flat-button color="accent">Complete order</button>
+  </div>
+
+  <div class="__no-products mat-subheading-1" fxLayoutAlign="center center" *ngIf="!(hasProducts$ | async)">
+    No products
   </div>
 </div>
