@@ -12,6 +12,7 @@ import { ProductCardModule } from '../product/product-card/product-card.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from '../shared/shared.module';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     BrowseRoutingModule,
+    SharedModule,
+    LayoutModule,
     MatButtonModule,
     MatIconModule,
     FlexModule,
@@ -30,7 +33,6 @@ import { SharedModule } from '../shared/shared.module';
     ProductCardModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    SharedModule
   ]
 })
 export class BrowseModule { }
