@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "European",
+      "segment": "european"
+    },
+    {
+      "id": 2,
+      "name": "Italian",
+      "segment": "italian"
+    },
+    {
+      "id": 3,
+      "name": "Asian",
+      "segment": "asian"
+    },
+    {
+      "id": 4,
+      "name": "American",
+      "segment": "american"
+    },
+    {
+      "id": 5,
+      "name": "Ukrainian",
+      "segment": "ukrainian"
+    },
+    {
+      "id": 6,
+      "name": "Japan",
+      "segment": "japan"
+    }
+  ]
+}
+
+
