@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://cryptic-citadel-05540.herokuapp.com',
   pagination: {
     limit: 10,
     limitOptions: [5, 10, 25]
