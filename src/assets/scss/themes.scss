@@ -6,173 +6,33 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-$mat-blue-custom: (
-        50: #ffebee,
-        100: #ffcdd2,
-        200: #ef9a9a,
-        300: #e57373,
-        400: #ef5350,
-        500: #0336FF,
-        600: #e53935,
-        700: #d32f2f,
-        800: #c62828,
-        900: #b71c1c,
-        A100: #ff8a80,
-        A200: #ff5252,
-        A400: #ff1744,
-        A700: #d50000,
-        contrast: (
-                50: $black-87-opacity,
-                100: $black-87-opacity,
-                200: $black-87-opacity,
-                300: $black-87-opacity,
-                400: $black-87-opacity,
-                500: white,
-                600: white,
-                700: white,
-                800: $white-87-opacity,
-                900: $white-87-opacity,
-                A100: $black-87-opacity,
-                A200: white,
-                A400: white,
-                A700: white,
-        )
-);
-
-$mat-yellow-custom: (
-        50: #ffebee,
-        100: #ffcdd2,
-        200: #ef9a9a,
-        300: #e57373,
-        400: #ef5350,
-        500: #FFDE03,
-        600: #e53935,
-        700: #d32f2f,
-        800: #c62828,
-        900: #b71c1c,
-        A100: #ff8a80,
-        A200: #ff5252,
-        A400: #ff1744,
-        A700: #d50000,
-        contrast: (
-                50: $black-87-opacity,
-                100: $black-87-opacity,
-                200: $black-87-opacity,
-                300: $black-87-opacity,
-                400: $black-87-opacity,
-                500: white,
-                600: white,
-                700: white,
-                800: $white-87-opacity,
-                900: $white-87-opacity,
-                A100: $black-87-opacity,
-                A200: white,
-                A400: white,
-                A700: white,
-        )
-);
-
-$mat-red-custom: (
-        50: #ffebee,
-        100: #ffcdd2,
-        200: #ef9a9a,
-        300: #e57373,
-        400: #ef5350,
-        500: #FF0266,
-        600: #e53935,
-        700: #d32f2f,
-        800: #c62828,
-        900: #b71c1c,
-        A100: #ff8a80,
-        A200: #ff5252,
-        A400: #ff1744,
-        A700: #d50000,
-        contrast: (
-                50: $black-87-opacity,
-                100: $black-87-opacity,
-                200: $black-87-opacity,
-                300: $black-87-opacity,
-                400: $black-87-opacity,
-                500: white,
-                600: white,
-                700: white,
-                800: $white-87-opacity,
-                900: $white-87-opacity,
-                A100: $black-87-opacity,
-                A200: white,
-                A400: white,
-                A700: white,
-        )
-);
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$yellow-app-primary: mat-palette($mat-yellow-custom, 500);
-$yellow-app-accent:  mat-palette($mat-blue-custom, 500);
+$light-app-primary: mat-palette($mat-orange, 500);
+$light-app-accent:  mat-palette($mat-yellow, 700);
 
 // The warn palette is optional (defaults to red).
-$yellow-app-warn:    mat-palette($mat-red-custom);
+$light-app-warn:    mat-palette($mat-red, 500);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as `color` or `typography`.
-$yellow-app-theme: mat-light-theme((
-        color: (
-                primary: $yellow-app-primary,
-                accent: $yellow-app-accent,
-                warn: $yellow-app-warn,
-        )
-));
-
-$yellow-app-dark-theme: mat-dark-theme((
-        color: (
-                primary: $yellow-app-primary,
-                accent: $yellow-app-accent,
-                warn: $yellow-app-warn,
-        )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-//@include angular-material-theme($candy-app-theme);
-
-$blue-app-primary: mat-palette($mat-blue-custom, 500);
-$blue-app-accent:  mat-palette($mat-yellow-custom, 500);
-$blue-app-warn:    mat-palette($mat-red-custom);
-
-$blue-app-theme: mat-light-theme((
-        color: (
-                primary: $blue-app-primary,
-                accent: $blue-app-accent,
-                warn: $blue-app-warn,
-        )
-));
-
-$red-app-primary: mat-palette($mat-red-custom, 500);
-$red-app-accent:  mat-palette($mat-blue-custom, 500);
-$red-app-warn:    mat-palette($mat-yellow-custom);
-
-$red-app-theme: mat-light-theme((
-        color: (
-                primary: $red-app-primary,
-                accent: $red-app-accent,
-                warn: $red-app-warn,
-        )
-));
-
-//$light-app-primary: mat-palette($mat-green, 200);
-//$light-app-accent:  mat-palette($mat-pink, 300);
-//$light-app-warn:    mat-palette($mat-red, 500);
-
-$light-app-primary: mat-palette($mat-orange, 500);
-$light-app-accent:  mat-palette($mat-yellow, 700);
-$light-app-warn:    mat-palette($mat-red, 500);
-
 $light-app-theme: mat-light-theme((
         color: (
                 primary: $light-app-primary,
                 accent: $light-app-accent,
                 warn: $light-app-warn,
+        )
+));
+
+$dark-app-primary: mat-palette($mat-cyan, 500);
+$dark-app-accent:  mat-palette($mat-cyan, 300);
+$dark-app-warn:    mat-palette($mat-pink, 500);
+
+$dark-app-theme: mat-dark-theme((
+        color: (
+                primary: $dark-app-primary,
+                accent: $dark-app-accent,
+                warn: $dark-app-warn,
         )
 ));

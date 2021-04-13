@@ -6,11 +6,24 @@
     <span>Angry Hungry</span>
   </div>
 
-  <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
-    <mat-icon [matBadge]="totalProducts$ | async"
-              [matBadgeHidden]="hideBadge$ | async"
-              matBadgeColor="warn">shopping_cart</mat-icon>
-  </button>
+  <div fxLayoutAlign="start center">
+<!--    <div>
+      <button mat-icon-button>
+        <mat-icon>nightlight_round</mat-icon>
+      </button>
+
+      <button mat-icon-button>
+        <mat-icon>wb_sunny</mat-icon>
+      </button>
+    </div>-->
+
+    <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
+      <mat-icon [matBadge]="totalProducts$ | async"
+                [matBadgeHidden]="hideBadge$ | async"
+                matBadgeColor="warn">shopping_cart
+      </mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 
 <mat-menu class="order-menu" #menu="matMenu" [overlapTrigger]="false">

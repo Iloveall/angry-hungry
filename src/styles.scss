@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-
-@import '~src/assets/scss/themes.scss';
-@import '~src/app/app.component.theme.scss';
+@import '~src/assets/scss/themes';
+@import '~src/app/order/order-details/order-details.theme';
+@import '~src/assets/scss/buttons.theme';
 
 html, body {
   height: 100%;
@@ -20,46 +20,18 @@ $custom-typography: mat-typography-config(
 
 .theme-1 {
   @include angular-material-theme($light-app-theme);
-  @include app-theme($light-app-theme);
-
-  $primary: map-get($light-app-theme, primary);
-  //background-color: mat-color($primary);
+  @include order-details-theme($light-app-theme);
+  @include buttons-theme($light-app-theme);
 }
 
-.theme-2 {
-  @include angular-material-theme($yellow-app-theme);
-  @include app-theme($yellow-app-theme);
+.theme-1-dark {
+  @include angular-material-color($dark-app-theme);
 
-  $primary: map-get($yellow-app-theme, primary);
-  background-color: mat-color($primary);
-}
+  $config: mat-get-color-config($dark-app-theme);
+  $background: map-get($config, background);
 
-.theme-3 {
-  @include angular-material-theme($red-app-theme);
-  @include app-theme($red-app-theme);
-
-  $primary: map-get($red-app-theme, primary);
-  background-color: mat-color($primary);
-}
-
-.order-menu {
-  &.mat-menu-panel {
-    max-width: none;
-    overflow: hidden;
-  }
-
-  .mat-menu-content {
-    padding: 0;
-
-    height: 100%;
-  }
-
-  .order-menu-content {
-    width: 400px;
-
-    padding: 1rem;
-
-    height: 100%;
+  body {
+    background-color: mat-color($background, background);
   }
 }
 

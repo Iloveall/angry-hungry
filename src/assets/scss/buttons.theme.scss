@@ -1,0 +1,10 @@
+@mixin buttons-theme($theme) {
+  .button-round {
+    height: 50px;
+    border-radius: 25px;
+
+    .mat-button-wrapper {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@mixin order-details-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  //@include angular-material-color($dark-app-theme);
+  //
+  //$config: mat-get-color-config($dark-app-theme);
+  //$foreground: map-get($config, foreground);
+  //
+  //.order-menu-content {
+  //  color: mat-color($foreground, foreground);
+  //}
+
+  .order-menu {
+    &.mat-menu-panel {
+      max-width: none;
+      overflow: hidden;
+    }
+
+    .mat-menu-content {
+      padding: 0;
+
+      height: 100%;
+    }
+
+    .order-menu-content {
+      width: 400px;
+
+      padding: 1rem;
+
+      height: 100%;
+    }
+  }
+}
