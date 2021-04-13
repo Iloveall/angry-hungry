@@ -55,6 +55,8 @@ $custom-typography: mat-typography-config(
   }
 
   .order-menu-content {
+    width: 400px;
+
     padding: 1rem;
 
     height: 100%;
@@ -63,4 +65,10 @@ $custom-typography: mat-typography-config(
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+@media screen and (max-width: 460px) {
+  .order-menu-content {
+    width: 320px !important;
+  }
 }

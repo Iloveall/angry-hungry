@@ -14,7 +14,7 @@
 </mat-toolbar>
 
 <mat-menu class="order-menu" #menu="matMenu" [overlapTrigger]="false">
-  <div class="order-menu-content" [style.width.px]="400" (click)="$event.stopPropagation()">
+  <div class="order-menu-content" (click)="$event.stopPropagation()">
     <app-order-details (closeMenu)="closeMenu()"></app-order-details>
   </div>
 </mat-menu>
