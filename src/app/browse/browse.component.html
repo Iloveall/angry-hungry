@@ -2,7 +2,12 @@
   <app-product-categories></app-product-categories>
 
   <div fxLayoutGap="1rem" *ngIf="hasProducts$ | async" appHideSkeleton>
-    <div gdColumns="repeat(4, 1fr)" gdGap="1rem" fxFlex>
+    <div gdColumns="repeat(5, 1fr)"
+         gdColumns.xs="repeat(1, 1fr)"
+         gdColumns.sm="repeat(2, 1fr)"
+         gdColumns.md="repeat(3, 1fr)"
+         gdColumns.lg="repeat(4, 1fr)"
+         gdGap="1rem" fxFlex>
       <app-product-card *ngFor="let product of products$ | async; trackBy: trackByFn"
                         [product]="product">
       </app-product-card>

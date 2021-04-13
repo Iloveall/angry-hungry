@@ -17,7 +17,8 @@
   </div>
 
   <ul class="__products" *ngIf="hasProducts$ | async">
-    <li class="__product-item" *ngFor="let orderProduct of orderProducts$ | async" fxLayout="column" fxLayoutGap=".4rem">
+    <li class="__product-item" fxLayout="column" fxLayoutGap=".4rem"
+        *ngFor="let orderProduct of orderProducts$ | async; trackBy: trackByFn">
       <div gdColumns="40px 1fr auto">
         <div>{{ orderProduct.amount }}x</div>
         <div>{{ orderProduct.product.name }}</div>

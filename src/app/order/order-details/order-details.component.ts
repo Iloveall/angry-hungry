@@ -15,6 +15,7 @@ import { Update } from '@ngrx/entity';
 import { getProductAction } from '../../product/product-details/store/get-product.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDoneModalComponent } from '../../shared/order-done-modal/order-done-modal.component';
+import { ProductInterface } from '../../product/types/product.intefrace';
 
 @Component({
   selector: 'app-order-details',
@@ -98,5 +99,9 @@ export class OrderDetailsComponent implements OnInit {
 
   clearAppData(): void {
     // Todo: clear all store data
+  }
+
+  trackByFn(index: number, orderProduct: OrderProductInterface): number {
+    return orderProduct.product.id;
   }
 }

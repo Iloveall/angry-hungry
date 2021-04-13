@@ -8,7 +8,7 @@
   <div class="__content">
     <div fxLayoutGap="1rem" fxLayoutAlign="space-between center">
       <div fxFlex="35%">
-        <img class="__image" src="./assets/images/default.png" alt="image">
+        <img class="__image" [src]="'./assets/images/food/' + (product.image || 'Frame 3.png')" alt="image">
       </div>
       <div fxFlex>
         <div class="mat-title">{{ product.name }}</div>

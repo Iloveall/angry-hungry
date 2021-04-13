@@ -9,7 +9,7 @@
      *ngIf="showProductDetails$ | async"
      appFocusOut
      (blurEvent)="onBlurProductDetails($event)">
-  <div class="__product-details-content" fxFlex="50%">
+  <div class="__product-details-content" fxFlex="50%" fxFlex.xs="100%">
     <app-product-details></app-product-details>
   </div>
 </div>
