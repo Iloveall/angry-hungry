@@ -84,15 +84,12 @@ export class ProductDetailsFormComponent implements OnInit {
   }
 
   onOptionChange(event: MatCheckboxChange, control: AbstractControl): void {
-    console.log('event', event.checked);
     if (event.checked) {
       control.get('amount')?.setValue(AMOUNT_VALUE);
     }
   }
 
   onAmountChange(event: number, control: AbstractControl): void {
-    console.log('event', event);
-
     if (event === 0) {
       control.get('option')?.setValue(false);
     }

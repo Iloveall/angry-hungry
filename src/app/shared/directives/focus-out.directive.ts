@@ -20,8 +20,6 @@ export class FocusOutDirective implements AfterViewInit {
     while (elem.parentElement) {
       elem = elem.parentElement;
 
-      console.log('this.el.nativeElement.tagName', this.el.nativeElement.tagName);
-      /*'APP-PRODUCT-DETAILS'*/
       if (elem.tagName === this.el.nativeElement.tagName) {
         allowToClose = false;
         break;

@@ -36,7 +36,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   initializeValues(): void {
-    this.orderProducts$ = this.store$.pipe(select(orderProductsSelector), tap(console.log));
+    this.orderProducts$ = this.store$.pipe(select(orderProductsSelector));
     this.totalPrice$ = this.store$.pipe(select(orderProductsTotalPriceSelector));
     this.hasProducts$ = this.store$.pipe(select(hasProductsSelector));
   }
