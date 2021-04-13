@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductDetailsFormComponent } from './product-details-form/product-details-form.component';
 import { SharedModule } from '../../shared/shared.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatButtonModule,
     FlexLayoutModule,
     SharedModule,
+    MatProgressSpinnerModule
   ],
   declarations: [ProductDetailsComponent, ProductDetailsFormComponent],
   exports: [ProductDetailsComponent]

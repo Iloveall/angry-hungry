@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="1rem">
   <app-product-categories></app-product-categories>
 
-  <div fxLayoutGap="1rem" *ngIf="hasProducts$ | async">
+  <div fxLayoutGap="1rem" *ngIf="hasProducts$ | async" appHideSkeleton>
     <div gdColumns="repeat(4, 1fr)" gdGap="1rem" fxFlex>
       <app-product-card *ngFor="let product of products$ | async; trackBy: trackByFn"
                         [product]="product">
@@ -9,7 +9,9 @@
     </div>
   </div>
 
-  <mat-spinner diameter="36" *ngIf="loading$ | async"></mat-spinner>
+  <div class="__spinner" fxLayoutAlign="center center">
+    <mat-spinner diameter="36" *ngIf="loading$ | async"></mat-spinner>
+  </div>
 
   <div class="mat-body-1"
        *ngIf="!(loaded$ | async) && !(hasProducts$ | async)">

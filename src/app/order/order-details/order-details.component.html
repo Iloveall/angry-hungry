@@ -53,7 +53,7 @@
   </div>
 
   <div fxLayoutAlign="center center" *ngIf="hasProducts$ | async">
-    <button mat-flat-button color="accent">Complete order</button>
+    <button mat-flat-button color="accent" (click)="onComplete($event)">Complete order</button>
   </div>
 
   <div class="__no-products mat-subheading-1" fxLayoutAlign="center center" *ngIf="!(hasProducts$ | async)">

@@ -1,13 +1,12 @@
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductDetailsService } from '../services/product-details.service';
 import { select, Store } from '@ngrx/store';
 import { ProductInterface } from '../types/product.intefrace';
 import { Observable } from 'rxjs';
-import { getProductSelector } from './store/get-product.selectors';
+import { getProductLoadingSelector, getProductSelector } from './store/get-product.selectors';
 import { addProductToOrderAction } from '../../order/store/order.actions';
 import { OrderProductInterface  } from '../../order/types/product-order.interface';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { filter, first, map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { getOrderProductSelector } from '../../order/store/order.selectors';
 
 @Component({
@@ -15,40 +14,19 @@ import { getOrderProductSelector } from '../../order/store/order.selectors';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponent implements OnInit, AfterViewInit {
+export class ProductDetailsComponent implements OnInit {
   product$: Observable<ProductInterface | null | undefined> | undefined;
+  loading$: Observable<boolean> | undefined;
   orderProduct$: Observable<any> | undefined;
-
-  isOpened = false;
-
-  @HostListener('window:click', ['$event'])
-  onWindowClick(e: any): void {
-    if (!this.isOpened) {
-      return;
-    }
-
-    // Todo: Move to directive
-    let elem = e.target;
-    let allowToClose = true;
-
-    while (elem.parentElement) {
-      elem = elem.parentElement;
-
-      if (elem.tagName === 'APP-PRODUCT-DETAILS') {
-        allowToClose = false;
-        break;
-      }
-    }
-
-    if (allowToClose) {
-      this.close();
-    }
-  }
 
   constructor(private store$: Store,
               private productDetailsService: ProductDetailsService) { }
 
   ngOnInit(): void {
+    this.initializeValues();
+  }
+
+  initializeValues(): void {
     this.product$ = this.store$.pipe(select(getProductSelector));
     this.orderProduct$ = this.product$.pipe(
       filter((product: any) => !!product),
@@ -60,17 +38,10 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
         )
       )
     );
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.isOpened = true;
-    });
+    this.loading$ = this.store$.pipe(select(getProductLoadingSelector));
   }
 
   onSubmit(event: any, product: ProductInterface): void {
-    console.log('event', event);
-
     const orderProduct: OrderProductInterface = {
       product,
       amount: 1,

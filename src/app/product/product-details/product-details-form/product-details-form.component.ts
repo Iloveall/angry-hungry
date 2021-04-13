@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ProductOptionInterface } from '../../types/product-option.intefrace';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { BehaviorSubject } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { filter, map, take, takeUntil } from 'rxjs/operators';
 
 const AMOUNT_VALUE = 1;
 
@@ -15,6 +15,7 @@ const AMOUNT_VALUE = 1;
 export class ProductDetailsFormComponent implements OnInit {
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
+  private readonly unsubscribe$ = new Subject<void>();
   private formValueSubject$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private formValue$ = this.formValueSubject$.asObservable();
 
@@ -57,25 +58,25 @@ export class ProductDetailsFormComponent implements OnInit {
     });
   }
 
+  buildFormValues = (formValue: any) => {
+    let values: any = [];
+
+    this.options.forEach(option => {
+      const value = formValue.values.find((v: any) => v.id === option.id);
+      values = [...values, value || {}];
+    });
+
+    return {values};
+  }
+
   updateValues(): void {
     this.formValue$.pipe(
       filter(formValue => !!formValue),
-      // take(1),
-      map(formValue => {
-        let values: any = [];
-
-        console.log('formValue1', formValue);
-
-        this.options.forEach(option => {
-          const value = formValue.values.find((v: any) => v.id === option.id);
-          values = [...values, value || {}];
-        });
-
-        console.log('values', values);
-
-        return {values};
-      })
-    ).subscribe(formValue => this.form.patchValue(formValue));
+      take(1),
+      map(this.buildFormValues)
+    )
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(formValue => this.form.patchValue(formValue));
   }
 
   onSubmit(event: Event): void {

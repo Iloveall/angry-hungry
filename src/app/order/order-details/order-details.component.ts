@@ -12,8 +12,9 @@ import { tap } from 'rxjs/operators';
 import { OrderProductInterface } from '../types/product-order.interface';
 import { removeProductFromOrderAction, updateProductOrderAction } from '../store/order.actions';
 import { Update } from '@ngrx/entity';
-import { getProductForIdSelector } from '../../product/store/get-products.selectors';
 import { getProductAction } from '../../product/product-details/store/get-product.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderDoneModalComponent } from '../../shared/order-done-modal/order-done-modal.component';
 
 @Component({
   selector: 'app-order-details',
@@ -27,7 +28,7 @@ export class OrderDetailsComponent implements OnInit {
   totalPrice$: Observable<number> | undefined;
   hasProducts$: Observable<boolean> | undefined;
 
-  constructor(private productDetailsService: ProductDetailsService, private store$: Store) {
+  constructor(private productDetailsService: ProductDetailsService, private store$: Store, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -85,5 +86,17 @@ export class OrderDetailsComponent implements OnInit {
 
   totalPriceOfOrderProductOptions$(id: number): Observable<number> {
     return this.store$.pipe(select(totalPriceOfOrderProductOptionsSelector, {id}));
+  }
+
+  onComplete(event: Event): void {
+    this.closeMenu.emit();
+
+    const dialogRef = this.dialog.open(OrderDoneModalComponent);
+
+    dialogRef.afterClosed().subscribe(() => this.clearAppData());
+  }
+
+  clearAppData(): void {
+    // Todo: clear all store data
   }
 }

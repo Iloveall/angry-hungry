@@ -6,8 +6,10 @@
 
 <div class="__product-details mat-elevation-z6"
      fxLayoutAlign="end start"
-     *ngIf="showProductDetails$ | async">
+     *ngIf="showProductDetails$ | async"
+     appFocusOut
+     (blurEvent)="onBlurProductDetails($event)">
   <div class="__product-details-content" fxFlex="50%">
-    <app-product-details ></app-product-details>
+    <app-product-details></app-product-details>
   </div>
 </div>

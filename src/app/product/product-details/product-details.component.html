@@ -23,3 +23,9 @@
     </app-product-details-form>
   </div>
 </ng-container>
+
+<ng-container *ngIf="loading$ | async">
+  <div class="__spinner" fxLayoutAlign="center center">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
+</ng-container>

@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductModule } from '../product/product.module';
 import { OrderModule } from '../order/order.module';
 import { MatBadgeModule } from '@angular/material/badge';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatButtonModule,
     ProductModule,
     OrderModule,
-    MatBadgeModule
+    MatBadgeModule,
+    SharedModule
   ]
 })
 export class LayoutModule { }

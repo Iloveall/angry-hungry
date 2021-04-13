@@ -16,4 +16,9 @@ export class LayoutComponent implements OnInit {
     this.showProductDetails$ = this.productDetails.showDetails$;
   }
 
+  onBlurProductDetails(e: any): void {
+    console.log('close e');
+    this.productDetails.hideDetails();
+  }
+
 }
