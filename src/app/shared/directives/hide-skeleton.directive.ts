@@ -14,6 +14,8 @@ export class HideSkeletonDirective implements AfterViewInit {
 
   hideSkeleton(): void {
     const appSkeletonEl = this.document.getElementById('appSkeleton');
+    const appRootEl = this.document.getElementById('appRoot');
     this.renderer.setStyle(appSkeletonEl, 'display', 'none');
+    this.renderer.setStyle(appRootEl, 'display', 'block');
   }
 }

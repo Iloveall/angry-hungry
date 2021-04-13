@@ -14,8 +14,8 @@
     </div>
   </div>
 
-  <div class="__spinner" fxLayoutAlign="center center">
-    <mat-spinner diameter="36" *ngIf="loading$ | async"></mat-spinner>
+  <div class="__spinner" fxLayoutAlign="center center" *ngIf="loading$ | async">
+    <mat-spinner diameter="36" ></mat-spinner>
   </div>
 
   <div class="mat-body-1"
