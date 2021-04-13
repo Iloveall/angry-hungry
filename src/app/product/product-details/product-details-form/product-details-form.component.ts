@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ProductOptionInterface } from '../../types/product-option.intefrace';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -10,7 +10,8 @@ const AMOUNT_VALUE = 1;
 @Component({
   selector: 'app-product-details-form',
   templateUrl: './product-details-form.component.html',
-  styleUrls: ['./product-details-form.component.scss']
+  styleUrls: ['./product-details-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsFormComponent implements OnInit {
   @Output() submitForm: EventEmitter<any> = new EventEmitter();

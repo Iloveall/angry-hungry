@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { ProductInterface } from '../product/types/product.intefrace';
 import { select, Store } from '@ngrx/store';
@@ -18,7 +18,8 @@ import { SkeletonService } from '../shared/services/skeleton.service';
 @Component({
   selector: 'app-browse',
   templateUrl: './browse.component.html',
-  styleUrls: ['./browse.component.scss']
+  styleUrls: ['./browse.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrowseComponent implements OnInit, OnDestroy {
   products$: Observable<ProductInterface[] | null | undefined> | undefined;

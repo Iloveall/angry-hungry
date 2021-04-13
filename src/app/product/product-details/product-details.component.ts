@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProductDetailsService } from '../services/product-details.service';
 import { select, Store } from '@ngrx/store';
 import { ProductInterface } from '../types/product.intefrace';
@@ -12,7 +12,8 @@ import { getOrderProductSelector } from '../../order/store/order.selectors';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  styleUrls: ['./product-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent implements OnInit {
   product$: Observable<ProductInterface | null | undefined> | undefined;

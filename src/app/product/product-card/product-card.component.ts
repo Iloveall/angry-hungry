@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input, OnInit } from '@angular/core';
 import { ProductDetailsService } from '../services/product-details.service';
 import { ProductInterface } from '../types/product.intefrace';
 import { select, Store } from '@ngrx/store';
@@ -9,7 +9,8 @@ import { hasOrderProductForIdSelector } from '../../order/store/order.selectors'
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.scss']
+  styleUrls: ['./product-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: ProductInterface;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { productCategoriesSelector } from './store/get-product-categories.selectors';
 import { Observable } from 'rxjs';
@@ -10,7 +10,8 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-product-categories',
   templateUrl: './product-categories.component.html',
-  styleUrls: ['./product-categories.component.scss']
+  styleUrls: ['./product-categories.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCategoriesComponent implements OnInit {
   productCategories$: Observable<ProductCategoryInterface[] | null | undefined> | undefined;

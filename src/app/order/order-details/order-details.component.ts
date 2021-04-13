@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductDetailsService } from '../../product/services/product-details.service';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -20,7 +20,8 @@ import { ProductInterface } from '../../product/types/product.intefrace';
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.scss']
+  styleUrls: ['./order-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderDetailsComponent implements OnInit {
   @Output() closeMenu = new EventEmitter();
